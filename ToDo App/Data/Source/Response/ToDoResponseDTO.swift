@@ -1,11 +1,11 @@
 //
-//  ToDoModel.swift
+//  ToDoResponseDTO.swift
 //  ToDo App
 //
-//  Created by Yoga Darma on 03/01/25.
+//  Created by Yoga Darma on 10/01/25.
 //
 
-struct ToDoModel {
+struct ToDoResponseDTO: Codable {
     let id: Int
     let todo: String
     let completed: Bool

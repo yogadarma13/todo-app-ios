@@ -5,23 +5,47 @@
 //  Created by Yoga Darma on 02/01/25.
 //
 
-import UIKit
+import Combine
 import NVActivityIndicatorView
+import UIKit
 
 class CreateToDoViewController: UIViewController {
 
     @IBOutlet weak var taskField: UITextField!
     @IBOutlet weak var backButton: UIButton!
+
+    private var cancellables = Set<AnyCancellable>()
+
     var loadingIndicator: NVActivityIndicatorView!
-    
+
     var viewModel: CreateToDoViewModel?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationController?.setNavigationBarHidden(true, animated: true)
         loadingIndicator = setupLoadingIndicator()
         view.addSubview(loadingIndicator)
+
+        setupObservable()
+    }
+
+    private func setupObservable() {
+        viewModel?.$loading.compactMap { $0 }.sink { [weak self] loading in
+            if loading {
+                self!.showLoading(activityIndicator: self!.loadingIndicator)
+            } else {
+                self!.hideLoading(activityIndicator: self!.loadingIndicator)
+            }
+        }.store(in: &cancellables)
+
+        viewModel?.$data.compactMap { $0 }.sink { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+        }.store(in: &cancellables)
+
+        viewModel?.$error.compactMap { $0 }.sink { [weak self] message in
+            self?.showToast(message: message)
+        }.store(in: &cancellables)
     }
 
     @IBAction func moveToPreviousPage(_ sender: Any) {
@@ -32,18 +56,7 @@ class CreateToDoViewController: UIViewController {
         if taskField.text?.isEmpty == true {
             self.showToast(message: "Field tidak boleh kosong")
         } else {
-            showLoading(activityIndicator: loadingIndicator)
-            viewModel?.createToDo(text: self.taskField.text ?? "") { _ in
-                DispatchQueue.main.async {
-                    self.hideLoading(activityIndicator: self.loadingIndicator)
-                    self.navigationController?.popViewController(animated: true)
-                }
-            } err: { message in
-                DispatchQueue.main.async {
-                    self.hideLoading(activityIndicator: self.loadingIndicator)
-                    self.showToast(message: message)
-                }
-            }
+            viewModel?.createToDo(text: self.taskField.text ?? "")
         }
     }
 }

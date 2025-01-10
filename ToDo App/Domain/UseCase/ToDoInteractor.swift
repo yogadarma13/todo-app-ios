@@ -4,6 +4,7 @@
 //
 //  Created by Yoga Darma on 09/01/25.
 //
+import Combine
 
 class ToDoInteractor: ToDoUseCase {
     var repository: PRepository
@@ -12,9 +13,7 @@ class ToDoInteractor: ToDoUseCase {
         self.repository = repository
     }
 
-    func createToDo(
-        text: String, callback: ((ToDoModel) -> Void)?, err: ((String) -> Void)?
-    ) {
-        repository.createToDo(text: text, callback: callback, err: err)
+    func createToDo(text: String) -> AnyPublisher<ToDoModel, Error> {
+        return repository.createToDo(text: text)
     }
 }

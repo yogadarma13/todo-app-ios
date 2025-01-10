@@ -4,20 +4,13 @@
 //
 //  Created by Yoga Darma on 09/01/25.
 //
-
+import Combine
 import UIKit
 
 class RemoteDataSource: PRemoteDataSource {
-    func createToDo(
-        text: String, callback: ((ToDoModel) -> Void)?, err: ((String) -> Void)?
-    ) {
+    func createToDo(text: String) -> AnyPublisher<ToDoResponseDTO, Error> {
         let components = URLComponents(
             string: "https://dummyjson.com/todos/add")!
-
-        var request = URLRequest(url: components.url!)
-
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let jsonRequest =
             [
@@ -29,19 +22,22 @@ class RemoteDataSource: PRemoteDataSource {
         let jsonData = try! JSONSerialization.data(
             withJSONObject: jsonRequest, options: [])
 
-        let task = URLSession.shared.uploadTask(with: request, from: jsonData) {
-            data, response, error in
-            guard let response = response as? HTTPURLResponse, let data = data
-            else { return }
-            if response.statusCode == 201 {
-                let decoder = JSONDecoder()
-                let response = try! decoder.decode(ToDoModel.self, from: data)
-                callback?(response)
-            } else {
-                err?("Error")
-            }
-        }
+        var request = URLRequest(url: components.url!)
 
-        task.resume()
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
+
+        return URLSession.shared.dataTaskPublisher(for: request).tryMap {
+            output in
+            guard let response = output.response as? HTTPURLResponse,
+                (200...299).contains(response.statusCode)
+            else {
+                throw URLError(.badServerResponse)
+            }
+            return output.data
+        }.decode(type: ToDoResponseDTO.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
     }
 }

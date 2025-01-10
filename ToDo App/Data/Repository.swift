@@ -4,6 +4,7 @@
 //
 //  Created by Yoga Darma on 09/01/25.
 //
+import Combine
 
 class Repository: PRepository {
     var remoteDataSource: PRemoteDataSource
@@ -12,9 +13,9 @@ class Repository: PRepository {
         self.remoteDataSource = remoteDataSource
     }
 
-    func createToDo(
-        text: String, callback: ((ToDoModel) -> Void)?, err: ((String) -> Void)?
-    ) {
-        remoteDataSource.createToDo(text: text, callback: callback, err: err)
+    func createToDo(text: String) -> AnyPublisher<ToDoModel, Error> {
+        return remoteDataSource.createToDo(text: text)
+            .map { Mapper.map(dto: $0) }
+            .eraseToAnyPublisher()
     }
 }

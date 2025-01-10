@@ -4,9 +4,8 @@
 //
 //  Created by Yoga Darma on 09/01/25.
 //
+import Combine
 
 protocol PRepository {
-    func createToDo(
-        text: String, callback: ((ToDoModel) -> Void)?, err: ((String) -> Void)?
-    )
+    func createToDo(text: String) -> AnyPublisher<ToDoModel, Error>
 }
