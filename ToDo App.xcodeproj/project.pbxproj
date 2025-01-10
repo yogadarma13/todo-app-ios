@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		983123C72D31197B00694291 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983123C62D31197B00694291 /* UIViewControllerExtensions.swift */; };
 		98AC608F2D2FDBE000DE42A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98AC608A2D2FDBE000DE42A5 /* Main.storyboard */; };
 		98AC60902D2FDBE000DE42A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98AC60842D2FDBE000DE42A5 /* LaunchScreen.storyboard */; };
 		98AC60922D2FDBE000DE42A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98AC60822D2FDBE000DE42A5 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		25AD5F69DD21AE205D99DE0A /* Pods-ToDo AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDo AppTests.debug.xcconfig"; path = "Target Support Files/Pods-ToDo AppTests/Pods-ToDo AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3E8F600CD5C879A496C44A9E /* Pods-ToDo App-ToDo AppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDo App-ToDo AppUITests.debug.xcconfig"; path = "Target Support Files/Pods-ToDo App-ToDo AppUITests/Pods-ToDo App-ToDo AppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		47842CEA63D302AA7BAF59E8 /* Pods_ToDo_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDo_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		983123C62D31197B00694291 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		98912A832D27888800981852 /* ToDo AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ToDo AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98912A842D27888800981852 /* ToDo AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ToDo AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98AC60652D2FDB9400DE42A5 /* ToDo App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ToDo App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +128,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		983123C52D31195700694291 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				983123C62D31197B00694291 /* UIViewControllerExtensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		989129D62D2671FD00981852 = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +195,7 @@
 		98AC608E2D2FDBE000DE42A5 /* ToDo App */ = {
 			isa = PBXGroup;
 			children = (
+				983123C52D31195700694291 /* Utils */,
 				98AC60B12D30FB4C00DE42A5 /* DI.swift */,
 				98AC609C2D2FE0E600DE42A5 /* Presentation */,
 				98AC609B2D2FE0D800DE42A5 /* Data */,
@@ -514,6 +525,7 @@
 				98AC60B22D30FB4C00DE42A5 /* DI.swift in Sources */,
 				98AC60942D2FDBE000DE42A5 /* ToDoModel.swift in Sources */,
 				98AC60952D2FDBE000DE42A5 /* CreateToDoViewController.swift in Sources */,
+				983123C72D31197B00694291 /* UIViewControllerExtensions.swift in Sources */,
 				98AC60962D2FDBE000DE42A5 /* AppDelegate.swift in Sources */,
 				98AC60AD2D2FE2F700DE42A5 /* ToDoInteractor.swift in Sources */,
 				98AC60A92D2FE2D100DE42A5 /* PRepository.swift in Sources */,
