@@ -13,6 +13,10 @@ class ToDoInteractor: ToDoUseCase {
         self.repository = repository
     }
 
+    func getAllToDo() -> AnyPublisher<[ToDoModel], Error> {
+        return repository.getAllToDo()
+    }
+
     func createToDo(text: String) -> AnyPublisher<ToDoModel, Error> {
         return repository.createToDo(text: text)
     }

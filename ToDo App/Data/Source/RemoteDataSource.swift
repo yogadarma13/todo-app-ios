@@ -8,6 +8,20 @@ import Combine
 import UIKit
 
 class RemoteDataSource: PRemoteDataSource {
+    func getAllToDo() -> AnyPublisher<ListToDoResponseDTO, Error> {
+        let url = URL(string: "https://dummyjson.com/todos")!
+        return URLSession.shared.dataTaskPublisher(for: url).tryMap { output in
+            guard let response = output.response as? HTTPURLResponse,
+                (200...299).contains(response.statusCode)
+            else {
+                throw URLError(.badServerResponse)
+            }
+            return output.data
+        }.decode(type: ListToDoResponseDTO.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+
     func createToDo(text: String) -> AnyPublisher<ToDoResponseDTO, Error> {
         let components = URLComponents(
             string: "https://dummyjson.com/todos/add")!
@@ -16,7 +30,7 @@ class RemoteDataSource: PRemoteDataSource {
             [
                 "todo": text,
                 "completed": false,
-                "userId": 5,
+                "userId": 1,
             ] as [String: Any]
 
         let jsonData = try! JSONSerialization.data(

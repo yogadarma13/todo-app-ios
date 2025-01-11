@@ -13,9 +13,24 @@ class Repository: PRepository {
         self.remoteDataSource = remoteDataSource
     }
 
+    func getAllToDo() -> AnyPublisher<[ToDoModel], Error> {
+        return remoteDataSource.getAllToDo()
+            .map { response in
+                response.todos.map { data in
+                    ToDoModel(
+                        id: data.id,
+                        todo: data.todo,
+                        completed: data.completed,
+                        userId: data.userId
+                    )
+                }
+            }
+            .eraseToAnyPublisher()
+    }
+
     func createToDo(text: String) -> AnyPublisher<ToDoModel, Error> {
         return remoteDataSource.createToDo(text: text)
-            .map { Mapper.map(dto: $0) }
+            .map { response in Mapper.map(dto: response) }
             .eraseToAnyPublisher()
     }
 }

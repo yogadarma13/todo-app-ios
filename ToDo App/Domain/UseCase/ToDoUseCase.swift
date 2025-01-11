@@ -7,5 +7,6 @@
 import Combine
 
 protocol ToDoUseCase {
+    func getAllToDo() -> AnyPublisher<[ToDoModel], Error>
     func createToDo(text: String) -> AnyPublisher<ToDoModel, Error>
 }

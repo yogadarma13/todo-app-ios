@@ -21,6 +21,13 @@ extension SwinjectStoryboard {
         defaultContainer.register(CreateToDoViewModel.self) { r in
             CreateToDoViewModel(usecase: r.resolve(ToDoUseCase.self)!)
         }
+        defaultContainer.register(MainViewModel.self) { r in
+            MainViewModel(usecase: r.resolve(ToDoUseCase.self)!)
+        }
+        defaultContainer.storyboardInitCompleted(MainViewController.self) {
+            r, c in
+            c.viewModel = r.resolve(MainViewModel.self)
+        }
         defaultContainer.storyboardInitCompleted(CreateToDoViewController.self) {
             r, c in
             c.viewModel = r.resolve(CreateToDoViewModel.self)

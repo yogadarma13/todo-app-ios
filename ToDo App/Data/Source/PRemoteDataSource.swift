@@ -7,5 +7,6 @@
 import Combine
 
 protocol PRemoteDataSource {
+    func getAllToDo() -> AnyPublisher<ListToDoResponseDTO, Error>
     func createToDo(text: String) -> AnyPublisher<ToDoResponseDTO, Error>
 }
