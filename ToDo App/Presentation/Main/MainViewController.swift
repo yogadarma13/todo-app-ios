@@ -11,22 +11,37 @@ import UIKit
 
 class MainViewController: UIViewController {
     @IBOutlet weak var newToDoButton: UIButton!
+    @IBOutlet weak var todoTableView: UITableView!
 
     private var cancellables = Set<AnyCancellable>()
 
     var loadingIndicator: NVActivityIndicatorView!
     var viewModel: MainViewModel?
 
+    var todoList: [ToDoModel] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setupFloatingActionButton()
+        navigationController?.setNavigationBarHidden(true, animated: true)
 
         loadingIndicator = setupLoadingIndicator()
         view.addSubview(loadingIndicator)
 
+        setupFloatingActionButton()
+        setupTableView()
         setupObservable()
+
         viewModel?.getAllToDo()
+    }
+
+    private func setupTableView() {
+        todoTableView.dataSource = self
+        todoTableView.separatorStyle = .none
+        todoTableView.contentInset = UIEdgeInsets(
+            top: 0, left: 0, bottom: 80, right: 0)
+        todoTableView.register(
+            UINib(nibName: "ToDoTableViewCell", bundle: nil),
+            forCellReuseIdentifier: "ToDoCell")
     }
 
     private func setupFloatingActionButton() {
@@ -47,7 +62,8 @@ class MainViewController: UIViewController {
         }.store(in: &cancellables)
 
         viewModel?.$data.compactMap { $0 }.sink { [weak self] data in
-            // Set to table view
+            self?.todoList = data
+            self?.todoTableView.reloadData()
         }.store(in: &cancellables)
 
         viewModel?.$error.compactMap { $0 }.sink { [weak self] message in
@@ -58,4 +74,42 @@ class MainViewController: UIViewController {
     @IBAction func addNewToDo(_ sender: Any) {
         performSegue(withIdentifier: "moveCreateToDo", sender: nil)
     }
+}
+
+extension MainViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)
+        -> Int
+    {
+        todoList.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
+        -> UITableViewCell
+    {
+
+        if let cell = tableView.dequeueReusableCell(
+            withIdentifier: "ToDoCell",
+            for: indexPath
+        ) as? ToDoTableViewCell {  // Mencari UITableViewCell berdasarkan Identifier.
+            let todo = todoList[indexPath.row]
+            cell.titleToDoLabel.text = todo.todo
+
+            if todo.completed {
+                cell.backgroundStatusLabel.backgroundColor = .systemGreen
+                    .withAlphaComponent(0.3)
+                cell.statusToDoLabel.text = "Done"
+                cell.statusToDoLabel.textColor = .systemGreen
+            } else {
+                cell.backgroundStatusLabel.backgroundColor = .systemRed
+                    .withAlphaComponent(0.3)
+                cell.statusToDoLabel.text = "To-do"
+                cell.statusToDoLabel.textColor = .systemRed
+            }
+
+            return cell
+        } else {
+            return UITableViewCell()  // Mengembalikan UITableViewCell jika tidak ditemukan.
+        }
+    }
+
 }

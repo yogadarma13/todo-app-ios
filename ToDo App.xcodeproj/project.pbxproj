@@ -12,6 +12,8 @@
 		983123CD2D317B3700694291 /* ToDoResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983123CC2D317B3700694291 /* ToDoResponseDTO.swift */; };
 		983123D32D32703500694291 /* ListToDoResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983123D22D32703500694291 /* ListToDoResponseDTO.swift */; };
 		983123D62D3275A800694291 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983123D52D3275A800694291 /* MainViewModel.swift */; };
+		983123D92D342AD800694291 /* ToDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 983123D82D342AD800694291 /* ToDoTableViewCell.xib */; };
+		983123DA2D342AD800694291 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983123D72D342AD800694291 /* ToDoTableViewCell.swift */; };
 		98AC608F2D2FDBE000DE42A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98AC608A2D2FDBE000DE42A5 /* Main.storyboard */; };
 		98AC60902D2FDBE000DE42A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98AC60842D2FDBE000DE42A5 /* LaunchScreen.storyboard */; };
 		98AC60922D2FDBE000DE42A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98AC60822D2FDBE000DE42A5 /* Assets.xcassets */; };
@@ -63,6 +65,8 @@
 		983123CC2D317B3700694291 /* ToDoResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoResponseDTO.swift; sourceTree = "<group>"; };
 		983123D22D32703500694291 /* ListToDoResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListToDoResponseDTO.swift; sourceTree = "<group>"; };
 		983123D52D3275A800694291 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		983123D72D342AD800694291 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
+		983123D82D342AD800694291 /* ToDoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoTableViewCell.xib; sourceTree = "<group>"; };
 		98912A832D27888800981852 /* ToDo AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ToDo AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98912A842D27888800981852 /* ToDo AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ToDo AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98AC60652D2FDB9400DE42A5 /* ToDo App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ToDo App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +170,8 @@
 			children = (
 				98AC608B2D2FDBE000DE42A5 /* MainViewController.swift */,
 				983123D52D3275A800694291 /* MainViewModel.swift */,
+				983123D72D342AD800694291 /* ToDoTableViewCell.swift */,
+				983123D82D342AD800694291 /* ToDoTableViewCell.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -428,6 +434,7 @@
 				98AC608F2D2FDBE000DE42A5 /* Main.storyboard in Resources */,
 				98AC60902D2FDBE000DE42A5 /* LaunchScreen.storyboard in Resources */,
 				98AC60922D2FDBE000DE42A5 /* Assets.xcassets in Resources */,
+				983123D92D342AD800694291 /* ToDoTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,6 +574,7 @@
 				98AC60962D2FDBE000DE42A5 /* AppDelegate.swift in Sources */,
 				98AC60AD2D2FE2F700DE42A5 /* ToDoInteractor.swift in Sources */,
 				98AC60A92D2FE2D100DE42A5 /* PRepository.swift in Sources */,
+				983123DA2D342AD800694291 /* ToDoTableViewCell.swift in Sources */,
 				98AC60AB2D2FE2EB00DE42A5 /* ToDoUseCase.swift in Sources */,
 				983123CD2D317B3700694291 /* ToDoResponseDTO.swift in Sources */,
 				98AC60AF2D2FE37000DE42A5 /* PRemoteDataSource.swift in Sources */,
