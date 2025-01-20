@@ -12,7 +12,6 @@ import UIKit
 class CreateToDoViewController: UIViewController {
 
     @IBOutlet weak var taskField: UITextField!
-    @IBOutlet weak var backButton: UIButton!
 
     private var cancellables = Set<AnyCancellable>()
 
@@ -22,7 +21,6 @@ class CreateToDoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(true, animated: true)
 
         loadingIndicator = setupLoadingIndicator()
         view.addSubview(loadingIndicator)

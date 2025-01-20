@@ -73,7 +73,9 @@ class MainViewController: UIViewController {
     }
 
     @IBAction func addNewToDo(_ sender: Any) {
-        if let createToDoVC = storyboard?.instantiateViewController(
+        let createStoryBoard = UIStoryboard(name: "CreateToDo", bundle: nil)
+        
+        if let createToDoVC = createStoryBoard.instantiateViewController(
             withIdentifier: "CreateToDoViewController")
             as? CreateToDoViewController
         {
