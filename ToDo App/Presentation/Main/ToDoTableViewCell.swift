@@ -10,7 +10,7 @@ import UIKit
 class ToDoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var backgroundStatusLabel: UIView!
+    @IBOutlet weak var backgroundStatusView: UIView!
     @IBOutlet weak var statusToDoLabel: UILabel!
     @IBOutlet weak var titleToDoLabel: UILabel!
 
@@ -25,7 +25,7 @@ class ToDoTableViewCell: UITableViewCell {
         cardView.layer.shadowRadius = 4
         cardView.layer.masksToBounds = false
 
-        backgroundStatusLabel.layer.cornerRadius = 10
+        backgroundStatusView.layer.cornerRadius = 10
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

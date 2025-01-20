@@ -104,12 +104,12 @@ extension MainViewController: UITableViewDataSource {
             cell.titleToDoLabel.text = todo.todo
 
             if todo.completed {
-                cell.backgroundStatusLabel.backgroundColor = .systemGreen
+                cell.backgroundStatusView.backgroundColor = .systemGreen
                     .withAlphaComponent(0.3)
                 cell.statusToDoLabel.text = "Done"
                 cell.statusToDoLabel.textColor = .systemGreen
             } else {
-                cell.backgroundStatusLabel.backgroundColor = .systemRed
+                cell.backgroundStatusView.backgroundColor = .systemRed
                     .withAlphaComponent(0.3)
                 cell.statusToDoLabel.text = "To-do"
                 cell.statusToDoLabel.textColor = .systemRed
