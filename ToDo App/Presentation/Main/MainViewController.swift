@@ -36,6 +36,7 @@ class MainViewController: UIViewController {
 
     private func setupTableView() {
         todoTableView.dataSource = self
+        todoTableView.delegate = self
         todoTableView.separatorStyle = .none
         todoTableView.contentInset = UIEdgeInsets(
             top: 0, left: 0, bottom: 80, right: 0)
@@ -72,7 +73,13 @@ class MainViewController: UIViewController {
     }
 
     @IBAction func addNewToDo(_ sender: Any) {
-        performSegue(withIdentifier: "moveCreateToDo", sender: nil)
+        if let createToDoVC = storyboard?.instantiateViewController(
+            withIdentifier: "CreateToDoViewController")
+            as? CreateToDoViewController
+        {
+            navigationController?.pushViewController(
+                createToDoVC, animated: true)
+        }
     }
 }
 
@@ -111,5 +118,23 @@ extension MainViewController: UITableViewDataSource {
             return UITableViewCell()  // Mengembalikan UITableViewCell jika tidak ditemukan.
         }
     }
+}
 
+extension MainViewController: UITableViewDelegate {
+
+    func tableView(
+        _ tableView: UITableView, didSelectRowAt indexPath: IndexPath
+    ) {
+        let detailStoryBoard = UIStoryboard(name: "Detail", bundle: nil)
+
+        let selectedItem = todoList[indexPath.row]
+
+        if let detailVC = detailStoryBoard.instantiateViewController(
+            withIdentifier: "DetailViewController") as? DetailViewController
+        {
+            detailVC.data = selectedItem
+
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
+    }
 }

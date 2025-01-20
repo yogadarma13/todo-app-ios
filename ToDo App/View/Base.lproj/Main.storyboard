@@ -68,7 +68,7 @@
                     <connections>
                         <outlet property="newToDoButton" destination="7ml-r4-t9u" id="Bzi-4D-ZAU"/>
                         <outlet property="todoTableView" destination="gx2-3B-0x6" id="JOM-c4-bIU"/>
-                        <segue destination="Tae-iW-P81" kind="show" identifier="moveCreateToDo" id="5Lr-vH-Exs"/>
+                        <segue destination="Tae-iW-P81" kind="show" identifier="" id="5Lr-vH-Exs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -78,7 +78,7 @@
         <!--Create To Do View Controller-->
         <scene sceneID="dIJ-cG-j2h">
             <objects>
-                <viewController storyboardIdentifier="AddToDoViewController" id="Tae-iW-P81" customClass="CreateToDoViewController" customModule="ToDo_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateToDoViewController" id="Tae-iW-P81" customClass="CreateToDoViewController" customModule="ToDo_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MYZ-8K-KeK">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
