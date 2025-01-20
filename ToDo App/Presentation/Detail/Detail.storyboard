@@ -81,26 +81,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <stackView opaque="NO" contentMode="scaleToFill" id="RHb-7D-hFa">
-                    <rect key="frame" x="0.0" y="0.0" width="144.33333333333334" height="38"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="At6-dn-7fp">
-                            <rect key="frame" x="0.0" y="0.0" width="48" height="38"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" image="ArrowLeft">
-                                <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
-                            </buttonConfiguration>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Task" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEl-e7-SOL">
-                            <rect key="frame" x="47.999999999999993" y="0.0" width="96.333333333333314" height="38"/>
-                            <fontDescription key="fontDescription" type="system" weight="black" pointSize="21"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <viewLayoutGuide key="safeArea" id="J6V-U1-wMc"/>
-                </stackView>
             </objects>
             <point key="canvasLocation" x="66" y="-2"/>
         </scene>
